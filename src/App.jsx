@@ -1,24 +1,29 @@
-import Button from "./Button";
-import Footer from "./Footer";
-import NavBar from "./NavBar"; // Use NavBar instead of Navbar
-import './App.css'; // You might still need this for any custom styles
+import { useState, useEffect } from 'react';
+import Form from './Components/Form';
 
 function App() {
-  const styles = { color: 'red', backgroundColor: 'blue' };
-  
+  const [firstName, setFirstName] = useState('abc');
+
+  const handleClick = () => {
+    setFirstName('xyz');
+  };
+
+  useEffect(() => {
+    console.log(firstName); // Logs the updated state
+  }, [firstName]);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <NavBar /> {/* Add the NavBar component here */}
-      <div className="flex-grow">
-        {/* Main content */}
-        <Button text="click" />
-        <Button text="Submit" />
-        <Button text="apply" />
-        <Button text="contact" />
-        <h1 style={styles}>React</h1>
-        <input maxLength={5} />
-      </div>
-      <Footer />
+    <div>
+      <p>{firstName}</p>
+      <button
+        onClick={handleClick}
+        className="bg-blue-500 py-2 px-6 rounded-md m-2 text-white"
+      >
+        Click
+      </button>
+      {/* Ensure List component is properly imported or defined */}
+      {/* <List /> */}
+      <Form />
     </div>
   );
 }
