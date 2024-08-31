@@ -1,8 +1,8 @@
 // Day 1 App.jsx 
 
 import Button from "./Button";
-import Footer from "./Footer";
-import NavBar from "./NavBar"; // Use NavBar instead of Navbar
+import Footer from "./Components/Footer";
+import NavBar from "./Components/NavBar"; // Use NavBar instead of Navbar
 import './App.css'; // You might still need this for any custom styles
 
 function App() {
@@ -30,16 +30,19 @@ export default App;
 
 // Day 2 App.jsx
 
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import Form from './Components/Form';
 
 function App() {
-  const [firstName, setFirstName] = useState("abc");
+  const [firstName, setFirstName] = useState('abc');
 
   const handleClick = () => {
-    console.log("button click");
-    setFirstName("xyz");
-    console.log(firstName)
+    setFirstName('xyz');
   };
+
+  useEffect(() => {
+    console.log(firstName); // Logs the updated state
+  }, [firstName]);
 
   return (
     <div>
@@ -48,8 +51,11 @@ function App() {
         onClick={handleClick}
         className="bg-blue-500 py-2 px-6 rounded-md m-2 text-white"
       >
-        click
+        Click
       </button>
+      {/* Ensure List component is properly imported or defined */}
+      {/* <List /> */}
+      <Form />
     </div>
   );
 }
@@ -57,5 +63,24 @@ function App() {
 export default App;
 
 
-// Day 2 form ( App.jsx )
+// Day 3 ( App.jsx for Render.jsx & Condictional.jsx)
+
+import React from 'react'
+import Render from './Components/Render'
+import Condictional from './Components/Condictional'
+
+function App () {
+  return (
+    <div>
+      <Render/>
+      <Condictional/>
+    </div>
+  )
+}
+
+export default App
+
+
+
+
 
